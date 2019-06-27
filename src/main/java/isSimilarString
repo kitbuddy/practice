@@ -1,0 +1,34 @@
+import java.util.HashSet;
+
+public class Main {
+
+    public static void main(String[] args) {
+    // write your code here
+        System.out.println(isSimilarString("greek", "greke"));
+    }
+
+    public static boolean isSimilarString(String one, String two){
+        if(one.isEmpty() || two.isEmpty()){
+            return false;
+        }
+        if(two.charAt(two.length() - 1) != one.charAt(one.length() - 1) || two.charAt(0) != one.charAt(0)){
+            return false;
+        }
+        else{
+            int count = 0;
+            HashSet<Character> set = new HashSet<>();
+            for(int i = 0; i < one.length(); i++){
+                set.add(one.charAt(i));
+            }
+            for(int j = 0; j < two.length(); j++){
+                if(set.contains(two.charAt(j))){
+                    count++;
+                }
+            }
+            if(count == two.length()){
+                return true;
+            }
+        }
+        return false;
+
+    }
